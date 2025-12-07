@@ -11,7 +11,7 @@ import LearnMusicSection from "../component/LearnMusicSection";
 function Home() {
   return (
     <>
-    
+    <div>hello</div>
       <Banner />
       <InstrumentCards/>
       <Musiclogin/>
