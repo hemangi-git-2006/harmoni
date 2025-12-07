@@ -1,0 +1,116 @@
+.piano1-wrapper {
+  background: #4a2c6a;
+  min-height: 100vh;
+  padding: 30px;
+  text-align: center;
+}
+
+.title {
+  color: #f0e6f6;
+  margin-bottom: 25px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.btn-pink {
+  background-color: #b3295a;
+  border: none;
+  padding: 10px 22px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+.btn-pink:hover {
+  background-color: #992350;
+}
+
+.btn-pink.active {
+  background-color: #d63384;
+}
+
+.piano-container {
+  position: relative;
+  display: inline-block;
+}
+
+.white-keys {
+  display: flex;
+}
+
+.white-key {
+  width: 56px;
+  height: 200px;
+  background: linear-gradient(#ffffff, #f2f2f2);
+  border: 1px solid #ccc;
+  border-radius: 0 0 6px 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 12px;
+  transition: 0.1s ease;
+  user-select: none;
+}
+
+.white-key:hover {
+  background: linear-gradient(#f4f4f4, #eaeaea);
+}
+
+.white-key.active {
+  background: linear-gradient(#e0e0e0, #d0d0d0);
+  transform: translateY(2px);
+}
+
+.white-key.marked {
+  background: linear-gradient(#ffd700, #ffcc00);
+}
+
+.black-keys-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.black-key {
+  pointer-events: auto;
+  width: 40px;
+  height: 120px;
+  background: linear-gradient(#333, #1a1a1a);
+  position: absolute;
+  border-radius: 0 0 4px 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 6px;
+  transition: 0.1s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4);
+}
+
+.black-key:hover {
+  background: linear-gradient(#444, #2a2a2a);
+}
+
+.black-key.active {
+  background: linear-gradient(#666, #444);
+  transform: translateY(2px);
+}
+
+.black-key.marked {
+  background: linear-gradient(#ffd700, #cc9900);
+}
+
+.note-label {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: pre-line;
+}

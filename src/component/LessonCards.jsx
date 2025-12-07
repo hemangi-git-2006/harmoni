@@ -1,0 +1,142 @@
+import React, { useState } from "react";
+import "./LessonCards.css";
+import pino from "../images/pino.jpg";
+
+import { IoChevronBackCircle } from "react-icons/io5";
+import staff from "../images/staff.jpg";
+import claf from "../images/claf.jpg";
+import accidental  from "../images/accidental.png";
+import intervals  from "../images/intervals.jpg";
+import chord  from "../images/chord.png";
+import scale from "../images/scale.png";
+import key from "../images/key.jpg";
+import Staff from "./Staff.jsx";
+import Notes from "./Notes.jsx";  
+ // ✅ Import your Notes component
+
+
+export default function LessonCards() {
+
+  const [activeLesson, setActiveLesson] = useState(null);
+
+  // Pitch cards
+  const pitchCards = [
+    { 
+      title: "Notes", 
+      desc: "Learn about notes and their positions on the piano.",
+      img: pino,
+      lesson: "notes"     // identify this lesson
+    },
+    { 
+      title: "The staff", 
+      desc: "Learn about the staff and note positions on the staff.",
+      img: staff,
+      lesson: "staff"
+    },
+    { 
+      title: "Clefs", 
+      desc: "Understand treble clef, bass clef, and how notes are placed.",
+      img: claf,
+      lesson: null
+    },
+    { 
+      title: "Accidentals", 
+      desc: "Learn sharps, flats and naturals.",
+      img: accidental,
+      lesson: null
+    },
+  ];
+
+  // Structure cards
+  const structureCards = [
+    { 
+      title: "Intervals", 
+      desc: "Learn how distance between two notes forms intervals.",
+      img: intervals,
+      lesson: null
+    },
+    { 
+      title: "Chords", 
+      desc: "Understand triads, seventh chords, and chord structures.",
+      img: chord,
+      lesson: null
+    },
+    { 
+      title: "Scales", 
+      desc: "Learn major, minor and other scale patterns.",
+      img: scale,
+      lesson: null
+    },
+    { 
+      title: "Keys", 
+      desc: "Understand key signatures and how to identify them.",
+      img: key,
+      lesson: null
+    },
+  ];
+
+  // If Notes lesson is opened → show Notes component
+  if (activeLesson === "notes") {
+    return (
+      <div className="lesson-wrapper">
+        <button className="back-btn" onClick={() => setActiveLesson(null)}>
+          <IoChevronBackCircle />
+          Back
+        </button>
+        <Notes />   {/* SHOW NOTES COMPONENT */}
+      </div>
+    );
+  }
+  if (activeLesson === "staff") {
+  return (
+    <div className="lesson-wrapper">
+      <button className="back-btn" onClick={() => setActiveLesson(null)}>
+        <IoChevronBackCircle />
+        Back
+      </button>
+
+      <Staff />   {/* show Staff.jsx */}
+    </div>
+  );
+}
+
+
+  // Default card page
+  return (
+    <div className="lesson-wrapper">
+
+      {/* Pitch Section */}
+      <h2 className="section-title">Pitch</h2>
+      <div className="card-grid">
+        {pitchCards.map((c, i) => (
+          <div 
+            key={i} 
+            className="lesson-card"
+            onClick={() => setActiveLesson(c.lesson)}
+          >
+            <img src={c.img} alt={c.title} className="card-image"/>
+            <div className="card-content">
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Structure Section */}
+      <h2 className="section-title">Structure</h2>
+      <div className="card-grid">
+        {structureCards.map((c, i) => (
+          <div key={i} className="lesson-card">
+            <img src={c.img} alt={c.title} className="card-image"/>
+            <div className="card-content">
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  );
+}
