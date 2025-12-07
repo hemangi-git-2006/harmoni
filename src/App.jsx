@@ -9,7 +9,7 @@ import Footer from "./component/Footer";
 import Home from "./pages/Home"
 import AuthPage from "./pages/AuthPage";
 import Instruments from "./pages/Instruments"
-import Lesson from "./pages/Lesson"
+import lesson from "./pages/Lesson"
 
 
 
