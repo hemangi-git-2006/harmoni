@@ -3,9 +3,11 @@ import "./Notes.css";
 import Piano from "../component/Piano";
 import pino2 from "../images/pino2.png";
 import pino3 from "../images/pino3.png";
+import pinaolast from "../images/pinaolast.jpg";
 
 
 export default function Notes() {
+const [playing, setPlaying] = React.useState(null);
 
   // ✅ STEP 3 — Correct playNote function for Vite + public folder
   const playNote = (note) => {
@@ -13,10 +15,22 @@ export default function Notes() {
     audio.currentTime = 0;
     audio.play().catch((err) => console.log("Audio error:", err));
   };
-  const playAudio = (file) => {
-    const audio = new Audio(`/octaves/${file}`);
-    audio.play().catch(err => console.log("Audio error:", err));
+  // const playAudio = (file) => {
+  //   const audio = new Audio(`/octaves/${file}`);
+  //   audio.play().catch(err => console.log("Audio error:", err));
+  // };
+
+  const playAudio = (file, id) => {
+  const audio = new Audio(`/octaves/${file}`);
+
+  audio.play().then(() => {
+    setPlaying(id); // show pause icon or animation
+  });
+
+  audio.onended = () => {
+    setPlaying(null); // reset button when audio ends
   };
+};
 
   return (
     <div className="notes-page">
@@ -105,78 +119,82 @@ export default function Notes() {
   </p>
 
   {/* 🔥 INSERT OCTAVE TABLE HERE */}
-  <table className="table table-bordered text-center octave-table">
-  <thead>
-    <tr>
-      <th>Octave</th>
-      <th>Notes</th>
-      <th>Pitch</th>
-      <th>Audio sample</th>
-    </tr>
-  </thead>
+    <table className="table table-bordered text-center octave-table">
+    <thead>
+      <tr>
+        <th>Octave</th>
+        <th>Notes</th>
+        <th>Pitch</th>
+        <th>Audio sample</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <tr>
-      <td>Octave 7</td>
-      <td>C7 → B7</td>
-      <td>Very high</td>
-      <td>
-        <button
-          className="play-btn"
-          onClick={() => playAudio("octave7.mp3")}
-        >
-          ▶
-        </button>
-        <span className="audio-length">00:01</span>
-      </td>
-    </tr>
+    <tbody>
+      <tr>
+        <td>Octave 7</td>
+        <td>C7 → B7</td>
+        <td>Very high</td>
+        <td>
+         <button
+  className="play-btn"
+  onClick={() => playAudio("octave7.mp3", 7)}
+>
+  {playing === 7 ? "⏸" : "▶"}
+</button>
 
-    <tr>
-      <td>Octave 6</td>
-      <td>C6 → B6</td>
-      <td>High</td>
-      <td>
-        <button
-          className="play-btn"
-          onClick={() => playAudio("octave6.mp3")}
-        >
-          ▶
-        </button>
-        <span className="audio-length">00:00</span>
-      </td>
-    </tr>
+          <span className="audio-length">00:01</span>
+        </td>
+      </tr>
 
-    <tr>
-      <td>Octave 5</td>
-      <td>C5 → B5</td>
-      <td>Moderately high</td>
-      <td>
-        <button
-          className="play-btn"
-          onClick={() => playAudio("octave5.mp3")}
-        >
-          ▶
-        </button>
-        <span className="audio-length">00:00</span>
-      </td>
-    </tr>
+      <tr>
+        <td>Octave 6</td>
+        <td>C6 → B6</td>
+        <td>High</td>
+        <td>
+         <button
+  className="play-btn"
+  onClick={() => playAudio("octave6.mp3", 6)}
+>
+  {playing === 6 ? "⏸" : "▶"}
+</button>
 
-    <tr>
-      <td>Octave 4</td>
-      <td>C4 (Middle C) → B4</td>
-      <td>Medium</td>
-      <td>
+          <span className="audio-length">00:00</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Octave 5</td>
+        <td>C5 → B5</td>
+        <td>Moderately high</td>
+        <td>
+         <button
+  className="play-btn"
+  onClick={() => playAudio("octave5.mp3", 5)}
+>
+  {playing === 5 ? "⏸" : "▶"}
+</button>
+
+          <span className="audio-length">00:00</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Octave 4</td>
+        <td>C4 (Middle C) → B4</td>
+        <td>Medium</td>
+        <td>
         <button
-          className="play-btn"
-          onClick={() => playAudio("octave4.mp3")}
-        >
-          ▶
-        </button>
-        <span className="audio-length">00:00</span>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  className="play-btn"
+  onClick={() => playAudio("octave4.mp3", 4)}
+>
+  {playing === 4 ? "⏸" : "▶"}
+</button>
+
+          <span className="audio-length">00:00</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 
 </div>
@@ -188,8 +206,8 @@ export default function Notes() {
         <p>The distance between each of the twelve different notes is called a half step, or, a semitone. That is, the distance from any white or black key on the piano to the key immediately to its right or left, is a half step.
 
 The distance between the natural notes E and F and the natural notes B and C is a half step (1), while the distance between all other keys is two half steps (2):</p>
-        <img src="/images/half-steps.png" className="notes-img" alt="Half Steps" />
-        <p className="caption">The distance of two half steps is also called a whole step or a whole tone.</p>
+        <img src={pinaolast} className="notes-img" alt="Half Steps" />
+        <p >The distance of two half steps is also called a whole step or a whole tone.</p>
       </div>
 
     </div>

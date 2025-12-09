@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./LessonCards.css";
 import pino from "../images/pino.jpg";
 
 import { IoChevronBackCircle } from "react-icons/io5";
 import staff from "../images/staff.jpg";
 import claf from "../images/claf.jpg";
-import accidental  from "../images/accidental.png";
-import intervals  from "../images/intervals.jpg";
-import chord  from "../images/chord.png";
+import accidental from "../images/accidental.png";
+import intervals from "../images/intervals.jpg";
+import chord from "../images/chord.png";
 import scale from "../images/scale.png";
 import key from "../images/key.jpg";
-import Staff from "./Staff.jsx";
-import Notes from "./Notes.jsx";  
+
+import Staff from "./Staff";
+import Notes from "./Notes";
+import Clefs from "./Clefs";
+import Accidentals from "./Accidentals";  // IMPORTANT
+
+ 
+
  // ✅ Import your Notes component
 
 
@@ -37,13 +43,14 @@ export default function LessonCards() {
       title: "Clefs", 
       desc: "Understand treble clef, bass clef, and how notes are placed.",
       img: claf,
-      lesson: null
+     lesson: "clefs"
+
     },
     { 
       title: "Accidentals", 
       desc: "Learn sharps, flats and naturals.",
       img: accidental,
-      lesson: null
+      lesson: "accidentals"
     },
   ];
 
@@ -77,29 +84,48 @@ export default function LessonCards() {
 
   // If Notes lesson is opened → show Notes component
   if (activeLesson === "notes") {
-    return (
-      <div className="lesson-wrapper">
-        <button className="back-btn" onClick={() => setActiveLesson(null)}>
-          <IoChevronBackCircle />
-          Back
-        </button>
-        <Notes />   {/* SHOW NOTES COMPONENT */}
-      </div>
-    );
-  }
-  if (activeLesson === "staff") {
   return (
     <div className="lesson-wrapper">
       <button className="back-btn" onClick={() => setActiveLesson(null)}>
-        <IoChevronBackCircle />
-        Back
+        <IoChevronBackCircle /> Back
       </button>
-
-      <Staff />   {/* show Staff.jsx */}
+      <Notes />
     </div>
   );
 }
 
+if (activeLesson === "staff") {
+  return (
+    <div className="lesson-wrapper">
+      <button className="back-btn" onClick={() => setActiveLesson(null)}>
+        <IoChevronBackCircle /> Back
+      </button>
+      <Staff />
+    </div>
+  );
+}
+
+if (activeLesson === "clefs") {
+  return (
+    <div className="lesson-wrapper">
+      <button className="back-btn" onClick={() => setActiveLesson(null)}>
+        <IoChevronBackCircle /> Back
+      </button>
+      <Clefs />
+    </div>
+  );
+}
+
+if (activeLesson === "accidentals") {
+  return (
+    <div className="lesson-wrapper">
+      <button className="back-btn" onClick={() => setActiveLesson(null)}>
+        <IoChevronBackCircle /> Back
+      </button>
+      <Accidentals />
+    </div>
+  );
+}
 
   // Default card page
   return (
