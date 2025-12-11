@@ -1,0 +1,106 @@
+/* -------------------------------------------------- */
+/* WRAPPER */
+/* -------------------------------------------------- */
+.enharmonic-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.piano-container {
+  position: relative;
+  width: fit-content;
+  height: 190px;
+}
+
+/* -------------------------------------------------- */
+/* WHITE KEYS */
+/* -------------------------------------------------- */
+.white-keys {
+  display: flex;
+}
+
+.white-key {
+  width: 55px;
+  height: 180px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transition: 0.15s;
+}
+
+.white-key:hover {
+  background: #f0f0f0;
+}
+
+.white-label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* -------------------------------------------------- */
+/* BLACK KEYS */
+/* -------------------------------------------------- */
+.black-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120px;
+  pointer-events: none;
+  width: 100%;
+}
+
+.black-key {
+  width: 36px;
+  height: 120px;
+  background: #000;
+  border-radius: 0 0 4px 4px;
+  position: absolute;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: 0.15s;
+}
+
+.black-key:hover {
+  background: #222;
+}
+
+.black-label {
+  color: #fff;
+  padding-bottom: 7px;
+  font-size: 12px;
+  text-align: center;
+  white-space: pre-line;
+  line-height: 1.1;
+}
+
+/* -------------------------------------------------- */
+/* BLACK KEY POSITIONS — MATCHES EXACT PIANO LAYOUT */
+/* (55px white keys, black key centered between white keys) */
+/* -------------------------------------------------- */
+
+/* First Octave */
+.black-key:nth-child(1) { left: 40px; }    /* C# */
+.black-key:nth-child(2) { left: 95px; }    /* D# */
+
+.black-key:nth-child(3) { left: 205px; }   /* F# */
+.black-key:nth-child(4) { left: 260px; }   /* G# */
+.black-key:nth-child(5) { left: 315px; }   /* A# */
+
+/* Second Octave */
+.black-key:nth-child(6) { left: 40px + 385px; }  /* C# second octave */
+.black-key:nth-child(7) { left: 95px + 385px; }  /* D# */
+
+.black-key:nth-child(8) { left: 205px + 385px; } /* F# */
+.black-key:nth-child(9) { left: 260px + 385px; } /* G# */
+.black-key:nth-child(10) { left: 315px + 385px; } /* A# */

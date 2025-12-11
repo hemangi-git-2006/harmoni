@@ -28,6 +28,46 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(6px);
 }
+/* Accidentals List */
+.accidental-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Each row (symbol + text) */
+.accidental-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* The accidental symbols */
+.accidental-symbol {
+  font-size: 45px;
+  font-weight: bold;
+  width: 50px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Double flat should show both flats spaced nicely */
+.double-flat {
+  letter-spacing: -5px;
+}
+
+.accidental-row p {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #e6d7ff;
+  margin: 0;
+}
+
+.accidental-row strong {
+  color: #e666ff;
+}
+
 
 /* Section Titles */
 .accidentals-card h2 {
@@ -39,11 +79,24 @@
 
 /* Images */
 .accidentals-img {
-width: 100%;
+     width: 77%;
+  border-radius: 12px;
+  margin: 20px 0;
+  display: block;
+}
+.accidentals-img2
+{
+         width: 56%;
     border-radius: 12px;
     margin: 20px 0;
+    display: block;
 }
-
+.accidental-rules li {
+  color: #e2d5ff; 
+  font-size: 18px;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
 /* Caption */
 .caption {
   text-align: center;
@@ -101,3 +154,4 @@ width: 100%;
   color: #e666ff;
   transform: translateX(3px);
 }
+
