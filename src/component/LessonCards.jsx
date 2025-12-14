@@ -13,7 +13,7 @@ import key from "../images/key.jpg";
 
 import Staff from "./Staff";
 import Notes from "./Notes";
-import Clefs from "./clefs";
+import Clefs from "./Clefs";
 import Accidentals from "./Accidentals";
 import Interval from "./Interval";
 import Chords from "./Chords";
