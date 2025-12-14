@@ -30,9 +30,7 @@ const CustomNavbar = () => {
               Lesson
             </Nav.Link>
 
-            <Nav.Link href="#exercises" className="menu-item">
-              Exercises
-            </Nav.Link>
+          
             <Nav.Link href="#quiz" className="menu-item">
               Quiz
             </Nav.Link>
