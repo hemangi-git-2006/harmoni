@@ -84,7 +84,7 @@ export default function LessonCards() {
   // ✅ Lesson routing
   if (activeLesson === "notes") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -95,7 +95,7 @@ export default function LessonCards() {
 
   if (activeLesson === "staff") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -106,7 +106,7 @@ export default function LessonCards() {
 
   if (activeLesson === "clefs") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -117,7 +117,7 @@ export default function LessonCards() {
 
   if (activeLesson === "accidentals") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -128,7 +128,7 @@ export default function LessonCards() {
 
   if (activeLesson === "interval") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -138,7 +138,7 @@ export default function LessonCards() {
   }
 if (activeLesson === "chords") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -148,7 +148,7 @@ if (activeLesson === "chords") {
   }
   if (activeLesson === "scales") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -158,7 +158,7 @@ if (activeLesson === "chords") {
   }
    if (activeLesson === "keys") {
     return (
-      <div className="lesson-wrapper">
+      <div className="lesson1-wrapper">
         <button className="back-btn" onClick={() => setActiveLesson(null)}>
           <IoChevronBackCircle /> Back
         </button>
@@ -168,19 +168,19 @@ if (activeLesson === "chords") {
   }
   // ✅ Default cards page
   return (
-    <div className="lesson-wrapper">
+    <div className="lesson1-wrapper">
 
       {/* Pitch Section */}
       <h2 className="section-title">Pitch</h2>
-      <div className="card-grid">
+      <div className="card1-grid">
         {pitchCards.map((c, i) => (
           <div
             key={i}
-            className="lesson-card"
+            className="lesson1-card"
             onClick={() => setActiveLesson(c.lesson)}
           >
-            <img src={c.img} alt={c.title} className="card-image" />
-            <div className="card-content">
+            <img src={c.img} alt={c.title} className="card1-image" />
+            <div className="card1-content">
               <h3>{c.title}</h3>
               <p>{c.desc}</p>
             </div>
@@ -190,15 +190,15 @@ if (activeLesson === "chords") {
 
       {/* ✅ Structure Section — FIXED */}
       <h2 className="section-title">Structure</h2>
-      <div className="card-grid">
+      <div className="card1-grid">
         {structureCards.map((c, i) => (
           <div
             key={i}
-            className="lesson-card"
+            className="lesson1-card"
             onClick={() => setActiveLesson(c.lesson)} // ✅ IMPORTANT FIX
           >
-            <img src={c.img} alt={c.title} className="card-image" />
-            <div className="card-content">
+            <img src={c.img} alt={c.title} className="card1-image" />
+            <div className="card1-content">
               <h3>{c.title}</h3>
               <p>{c.desc}</p>
             </div>

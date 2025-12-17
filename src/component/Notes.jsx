@@ -109,33 +109,50 @@ export default function Notes() {
           Notes are labeled by octave numbers. Here are common octaves:
         </p>
 
-        {/* ⭐ OCTAVE TABLE */}
-        <table className="table table-bordered text-center octave-table">
-          <thead>
-            <tr>
-              <th>Octave</th>
-              <th>Notes</th>
-              <th>Pitch</th>
-              <th>Audio</th>
-            </tr>
-          </thead>
+        {/*  OCTAVE TABLE */}
+        
+<div className="triad-table-wrapper">
+  <table className="triad-table octave-table">
+    <thead>
+      <tr>
+        <th>Octave</th>
+        <th>Notes</th>
+        <th>Pitch</th>
+        <th>Audio sample</th>
+      </tr>
+    </thead>
 
-          <tbody>
-            {[7, 6, 5, 4].map((oct) => (
-              <tr key={oct}>
-                <td>Octave {oct}</td>
-                <td>C{oct} → B{oct}</td>
-                <td>{oct === 7 ? "Very high" : oct === 6 ? "High" : oct === 5 ? "Medium-high" : "Medium"}</td>
-                <td>
-                  <button className="play-btn" onClick={() => playAudio(`octave${oct}.mp3`, oct)}>
-                    {playing === oct ? "⏸" : "▶"}
-                  </button>
-                  <span className="audio-length">00:0{oct === 7 ? "1" : "0"}</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <tbody>
+      {[
+        { o: 7, notes: "C7 → B7", pitch: "Very high" },
+        { o: 6, notes: "C6 → B6", pitch: "High" },
+        { o: 5, notes: "C5 → B5", pitch: "Moderately high" },
+        { o: 4, notes: "C4 (Middle C) → B4", pitch: "Medium" },
+        { o: 3, notes: "C3 → B3", pitch: "Moderately low" },
+        { o: 2, notes: "C2 → B2", pitch: "Low" },
+        { o: 1, notes: "C1 → B1", pitch: "Very low" },
+      ].map((row) => (
+        <tr key={row.o}>
+          <td>Octave {row.o}</td>
+          <td>{row.notes}</td>
+          <td>{row.pitch}</td>
+          <td>
+            <button
+              className="play-btn"
+              onClick={() => playAudio(`octave${row.o}.mp3`, row.o)}
+            >
+              {playing === row.o ? "⏸" : "▶"}
+            </button>
+            <span className="audio-length">
+              {row.o === 7 ? "00:06" : "00:00"}
+            </span>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
       </div>
 
       {/* 4️⃣ HALF STEPS */}

@@ -1,0 +1,100 @@
+.about-page {
+  background: radial-gradient(circle at top, #2b0040, #12001f);
+  color: white;
+}
+
+/* ===== OUR STORY ===== */
+.story-section {
+  padding: 80px 0;
+}
+
+.section-title2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.section-text {
+  color: #cdb8ff;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.story-card {
+  height: 300px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* ===== VALUES ===== */
+.values-section {
+  padding: 60px 0;
+}
+
+.value-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-radius: 20px;
+  height: 100%;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-8px);
+}
+
+.value-card h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.value-card p {
+  color: #cdb8ff;
+  font-size: 0.95rem;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 100px 20px;
+}
+
+.cta-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.cta-section span {
+  color: #b98bff;
+}
+
+.cta-section p {
+  color: #cdb8ff;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  background: linear-gradient(135deg, #7b2cff, #b56cff);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+}
+.icon-box1 {
+  font-size: 2.2rem;
+  color: #b98bff;
+  margin-bottom: 15px;
+}
+.story-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

@@ -133,9 +133,9 @@
 }
 
 .octave-table tbody td {
-  padding: 12px;
-  border: 1px solid rgba(128, 0, 128, 0.15); /* soft purple border */
-  color: #3a0066;
+    padding: 12px;
+    border: 1px solid rgba(128, 0, 128, 0.15);
+    color: #e9e4ec;
 }
 
 /* Play button */
