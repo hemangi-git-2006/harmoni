@@ -1,0 +1,44 @@
+.audio-page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2a0a5e, #0a021a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-card {
+  background: #120726;
+  padding: 40px;
+  width: 520px;
+  border-radius: 28px;
+  text-align: center;
+  color: white;
+}
+
+.play-btn {
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.option-btn {
+  background: #2b146b;
+  color: white;
+  padding: 14px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.option-btn.correct { background: #22c55e; }
+.option-btn.wrong { background: #ef4444; }

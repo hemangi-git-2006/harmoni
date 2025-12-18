@@ -2,15 +2,13 @@ import React from "react";
 import "./QuizSelect.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaMusic, FaHeadphones } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 
-const QuizSelect = ({ onStartMCQ }) => {
+
+const QuizSelect = ({ onStartMCQ, onStartAudio }) => {
     return (
         <div className="quiz-page">
-            <div className="container text-center">
-
-
+        <div className="container text-center">
 
                 {/* Heading */}
                 <h1 className="quiz-title">
@@ -47,11 +45,10 @@ const QuizSelect = ({ onStartMCQ }) => {
                             >
                                 Start MCQ Quiz →
                             </button>
-
-                        </div>
+                     </div>
                     </div>
 
-                    {/* Audio Card */}
+                    {/* 🎧 Audio Card */}
                     <div className="col-md-5 mb-4">
                         <div className="quiz-card">
                             <FaHeadphones className="quiz-icon purple" />
@@ -68,15 +65,17 @@ const QuizSelect = ({ onStartMCQ }) => {
                                 <li>✔ Performance score</li>
                             </ul>
 
-                            <button className="quiz-btn purple-btn">
+                            <button
+                                className="quiz-btn purple-btn"
+                                onClick={onStartAudio}
+                            >
                                 Start Audio Quiz →
                             </button>
+
                         </div>
                     </div>
 
-                </div>
-
-                {/* Footer Text */}
+               </div>
                 <p className="quiz-footer mt-4">
                     🎼 Challenge yourself daily and become a music master!
                 </p>
@@ -84,8 +83,4 @@ const QuizSelect = ({ onStartMCQ }) => {
             </div>
         </div>
     );
-};
-
-export default QuizSelect;
-
-
+}; export default QuizSelect;

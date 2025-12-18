@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import QuizSelect from "../component/QuizSelect";
 import CardFlipQuiz from "../component/CardFlipQuiz";
+import AudioQuiz from "../component/AudioQuiz";
 
-const QuizPage = () => {
-  const [showMCQ, setShowMCQ] = useState(false);
+export default function QuizPage() {
+  const [mode, setMode] = useState("select");
+  // select | mcq | audio
 
   return (
     <>
-      {!showMCQ && (
-        <QuizSelect onStartMCQ={() => setShowMCQ(true)} />
+      {mode === "select" && (
+        <QuizSelect
+          onStartMCQ={() => setMode("mcq")}
+          onStartAudio={() => setMode("audio")}
+        />
       )}
 
-      {showMCQ && (
-        <CardFlipQuiz onBack={() => setShowMCQ(false)} />
+      {mode === "mcq" && <CardFlipQuiz />}
+
+      {mode === "audio" && (
+        <AudioQuiz onBack={() => setMode("select")} />
       )}
     </>
   );
-};
-
-export default QuizPage;
+}

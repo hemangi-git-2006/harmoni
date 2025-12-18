@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import "./CardFlipQuiz.css";
 
 /* ================= SET 1 ================= */
@@ -162,9 +162,13 @@ export default function CardFlipQuiz() {
           )}
 
           {/* 🔙 BACK TO QUIZ PAGE */}
-          <button className="back-btn" onClick={onBack}>
+          <button
+  className="back-btn"
+  onClick={() => navigate("/quiz")}
+>
   ← Back to Quiz Page
 </button>
+
         </div>
       </div>
     );
