@@ -10,7 +10,7 @@ const CustomNavbar = () => {
 
   return (
     // 🔥 ADD fixed="top" HERE
-    <Navbar expand="lg" className="custom-navbar" fixed="top">
+    <Navbar expand="lg" className="custom-navbar" >
       <Container>
         <Navbar.Brand href="/" className="logo d-flex align-items-center">
           <img src={logo} alt="Harmoniq Logo" className="logo-img" />

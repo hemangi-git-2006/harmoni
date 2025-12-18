@@ -6,7 +6,7 @@ body {
 
 .flip-quiz-page {
   min-height: calc(100vh - 90px); /* navbar height */
-  margin-top: 90px;              /* ✅ IMPORTANT FIX */
+  /* margin-top: 90px;             */
   background: radial-gradient(circle at top, #2a0a5e, #0a021a);
   display: flex;
   flex-direction: column;
