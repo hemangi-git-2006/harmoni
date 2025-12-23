@@ -2,27 +2,23 @@ import React, { useState } from "react";
 import { FaPlay, FaHeadphones } from "react-icons/fa";
 import "./AudioQuiz.css";
 
-const AUDIO_QUESTIONS = [
+const AUDIO_SET = [
   { audio: "C4.mp3", options: ["C4", "D4", "F4", "A4"], correct: "C4" },
   { audio: "D4.mp3", options: ["C4", "D4", "E4", "G4"], correct: "D4" },
   { audio: "E4.mp3", options: ["E4", "F4", "A4", "C4"], correct: "E4" },
   { audio: "F4.mp3", options: ["D4", "F4", "G4", "A4"], correct: "F4" },
-  { audio: "G4.mp3", options: ["E4", "F4", "G4", "B4"], correct: "G4" },
-  { audio: "A4.mp3", options: ["A4", "C4", "D4", "F4"], correct: "A4" },
-  { audio: "B4.mp3", options: ["A4", "B4", "C4", "D4"], correct: "B4" },
-  { audio: "C3.mp3", options: ["C3", "D3", "E3", "G3"], correct: "C3" },
-  { audio: "D3.mp3", options: ["C3", "D3", "F3", "A3"], correct: "D3" },
-  { audio: "E3.mp3", options: ["E3", "G3", "A3", "C3"], correct: "E3" },
+ 
+ { audio: "G4.mp3", options: ["E4", "F4", "G4", "B4"], correct: "G4" },
 ];
 
-export default function AudioQuiz({ onBack }) {
+export default function AudioFlipQuiz() {
   const [index, setIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState(null);
+  const [flipped, setFlipped] = useState(null);
   const [locked, setLocked] = useState(false);
-  const [done, setDone] = useState(false);
+  const [score, setScore] = useState(0);
+  const [phase, setPhase] = useState("quiz"); // quiz | result
 
-  const current = AUDIO_QUESTIONS[index];
+  const current = AUDIO_SET[index];
 
   const playSound = () => {
     const audio = new Audio(`/Piano/${current.audio}`);
@@ -30,69 +26,97 @@ export default function AudioQuiz({ onBack }) {
     audio.play();
   };
 
-  const choose = (opt) => {
+  const handleFlip = (option) => {
     if (locked) return;
-    setSelected(opt);
+
+    setFlipped(option);
     setLocked(true);
 
-    if (opt === current.correct) setScore(s => s + 1);
+    if (option === current.correct) {
+      setScore((s) => s + 1);
+    }
 
     setTimeout(() => {
-      if (index + 1 < AUDIO_QUESTIONS.length) {
-        setIndex(i => i + 1);
-        setSelected(null);
+      if (index + 1 < AUDIO_SET.length) {
+        setIndex((i) => i + 1);
+        setFlipped(null);
         setLocked(false);
       } else {
-        setDone(true);
+        setPhase("result");
       }
     }, 900);
   };
 
-  if (done) {
+  /* ================= RESULT SCREEN ================= */
+  if (phase === "result") {
     return (
-      <div className="audio-page center">
+      <div className="flip-quiz-page center">
         <div className="result-card">
           <h2>🎧 Audio Quiz Completed</h2>
-          <p>Score: {score} / 10</p>
+          <p>Your Score</p>
+          <h1 className="gold-text">
+            {score} / {AUDIO_SET.length}
+          </h1>
 
-          {score >= 7 ? (
-            <h1 className="gold-text">Great Ears! 🎶</h1>
-          ) : (
-            <h1 className="title-unlock">Practice More 👂</h1>
-          )}
-
-          <button className="back-btn" onClick={onBack}>
-            ← Back to Quiz
+          <button
+            className="start-btn"
+            onClick={() => {
+              setIndex(0);
+              setScore(0);
+              setFlipped(null);
+              setLocked(false);
+              setPhase("quiz");
+            }}
+          >
+            Retry Quiz →
           </button>
         </div>
       </div>
     );
   }
 
+  /* ================= QUIZ ================= */
   return (
-    <div className="audio-page">
-      <div className="audio-card">
-        <h1><FaHeadphones /> Listen & Guess</h1>
-        <p>Question {index + 1} of 10</p>
+    <div className="flip-quiz-page">
+      <div className="quiz-wrapper">
 
-        <button className="play-btn" onClick={playSound}>
-          <FaPlay /> Play Sound
-        </button>
+        <div className="quiz-headline">
+          <h1><FaHeadphones /> Listen & Guess</h1>
+          <p>Question {index + 1} of {AUDIO_SET.length}</p>
+        </div>
 
-        <div className="option-grid">
-          {current.options.map((opt, i) => {
-            let cls = "option-btn";
-            if (selected) {
-              if (opt === current.correct) cls += " correct";
-              else if (opt === selected) cls += " wrong";
-            }
+        <div className="quiz-box">
 
-            return (
-              <button key={i} className={cls} onClick={() => choose(opt)}>
-                {opt}
-              </button>
-            );
-          })}
+          <button className="play-btn" onClick={playSound}>
+            <FaPlay /> Play Sound
+          </button>
+
+          <div className="card-grid">
+            {current.options.map((opt, i) => {
+              let cls = "flip-card";
+
+              if (flipped) {
+                if (opt === current.correct) cls += " correct";
+                else if (opt === flipped) cls += " wrong";
+              }
+
+              return (
+                <div
+                  key={i}
+                  className={cls}
+                  onClick={() => handleFlip(opt)}
+                >
+                  <div className="card-inner">
+                    <div className="card-front">{opt}</div>
+                    <div className="card-back">
+                      {opt === current.correct ? "✔" : "✖"}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </div>

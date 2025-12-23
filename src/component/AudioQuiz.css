@@ -1,44 +1,119 @@
-.audio-page {
-  min-height: 100vh;
+/* REUSE SAME PAGE */
+.flip-quiz-page {
+  min-height: calc(100vh - 90px);
   background: radial-gradient(circle at top, #2a0a5e, #0a021a);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
 }
 
-.audio-card {
+.quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quiz-headline {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.quiz-headline h1 {
+  font-size: 37px;
+  font-weight: 800;
+  color: #c4b5fd;
+}
+
+.quiz-headline p {
+  color: #a78bfa;
+}
+
+.quiz-box {
   background: #120726;
   padding: 40px;
-  width: 520px;
   border-radius: 28px;
-  text-align: center;
-  color: white;
+  width: 520px;
+  box-shadow: 0 25px 60px rgba(140, 80, 255, 0.35);
 }
 
+/* PLAY BUTTON */
 .play-btn {
+  margin: 0 auto 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background: #8b5cf6;
-  color: white;
   border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  margin: 20px 0;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-weight: 700;
   cursor: pointer;
 }
 
-.option-grid {
+.play-btn:hover {
+  background: #a78bfa;
+}
+
+/* CARDS */
+.card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  gap: 18px;
 }
 
-.option-btn {
-  background: #2b146b;
-  color: white;
-  padding: 14px;
-  border-radius: 20px;
-  border: none;
+.flip-card {
+  perspective: 1000px;
   cursor: pointer;
 }
 
-.option-btn.correct { background: #22c55e; }
-.option-btn.wrong { background: #ef4444; }
+.card-inner {
+  height: 90px;
+  border-radius: 18px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.correct .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 20px #22c55e;
+}
+
+.flip-card.wrong .card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 0 20px #ef4444;
+  animation: shake 0.3s;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-front {
+  background: #2b146b;
+}
+
+.card-back {
+  background: #1f123f;
+  transform: rotateY(180deg);
+  font-size: 28px;
+}
+
+/* SHAKE */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
