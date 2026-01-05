@@ -76,9 +76,7 @@ const QuizSelect = ({ onStartMCQ, onStartAudio }) => {
                     </div>
 
                </div>
-                <p className="quiz-footer mt-4">
-                    🎼 Challenge yourself daily and become a music master!
-                </p>
+                
 
             </div>
         </div>
